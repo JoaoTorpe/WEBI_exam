@@ -8,7 +8,7 @@ function generateLabel(p){
 let li = document.createElement('li')
 li.innerHTML = `
 
-<div class="productlabel">
+<div class="productLabel">
             <img id = "productImg" src = "${p.imgUrl} alt = "era pra ter uma img aqui" "/>
         <h3>${p.name}</h3>
         <p>R$ ${p.price}</p>
