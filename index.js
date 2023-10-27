@@ -17,6 +17,10 @@ li.innerHTML = `
 </div>`
 ul.appendChild(li)
 
-
 }
+
+
+const cart = document.querySelector('#cart');
+const addToCart = document.querySelector('#addToCart');
+const displayQuant = document.querySelector('#displayQuant')
 

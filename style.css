@@ -5,7 +5,6 @@
 }
 
 #main{
-
     list-style: none;
      margin: auto;
      margin-top: 100px;
@@ -13,14 +12,43 @@
     flex-wrap: wrap;
     width: 80vw;
     justify-content: space-between;
-    border: solid red;
+   
 }
 
 #productImg{
-    height: 200px;
+ height: 200px;
 }
 
 .productLabel{
     width: 270px;
-    border: solid blue;
+    
+}
+
+#addToCart{
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+}
+#addToCart:hover{
+    cursor: pointer;
+}
+
+#cartArea{
+    margin-top: 15px;
+   margin-left: 10px;
+   display: flex;
+}
+
+#cartArea:hover{
+  cursor: pointer;
+}
+#displayQuant{
+    align-self: flex-end;
+}
+
+#cart{
+    height: 40px;
+
 }
