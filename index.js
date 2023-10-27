@@ -44,6 +44,9 @@ cartProductsContainer.addEventListener('click',()=>{
 if(cartProductsContainer.classList.contains('displayOn')){
     cartProductsContainer.classList.remove('displayOn')  
     cartProductsContainer.classList.add('displayNone')
+while(cartList.firstChild){
+    cartList.removeChild(  cartList.firstChild)
+}
 }
 })
 
