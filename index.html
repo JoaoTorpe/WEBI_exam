@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Lojas Angolanas</title>
+    <title>Loja de coisas</title>
 </head>
 <body>
 
+    <div id="formContainer">
+        <form action="">
+                <h3>Insert a product</h3>
+                <input type="text" name="nome" id="productName">
+                <input type="number" name="price" id="productPrice">
+                <input type="text" name="url" id="productImageUrl">
+                <input type="submit" name="Add" id="submitProductData">
+        </form>
+        
+            </div>
    
     <div class="displayNone" id="listContainer">
         <div id="cartProductsList">
@@ -23,8 +33,9 @@
 </div>
 
     <ul id="main" >
-
     </ul>
+
+    
  
 
     <script src="products.js" ></script>
