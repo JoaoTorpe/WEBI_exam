@@ -1,8 +1,10 @@
 
 const ul = document.getElementById('main')
 
+display()
+function display(){
 products.forEach((p)=>generateLabel(p))
-
+}
 function generateLabel(p){
 
 let li = document.createElement('li')
@@ -14,7 +16,9 @@ li.innerHTML = `
     <button class="addToCart" >Add to cart</button>
 </div>`
 
+
 ul.appendChild(li)
+
 
 }
 
@@ -25,9 +29,10 @@ const displayQuant = document.querySelector('#displayQuant')
 const cartProductsContainer = document.querySelector('#listContainer')
 const cartList = document.querySelector('#cartProductsList ul')
 const openFormBtn = document.querySelector('#openForm')
+const closeFormBtn = document.querySelector('#closeForm')
 const formContainer = document.querySelector('#formContainer')
 const form = document.querySelector('#productForm')
-let productsArray = [];
+let productsOnCartArray = [];
 let quantItems = 0;
 
 
@@ -36,7 +41,7 @@ cart.addEventListener('click',()=>{
 cartProductsContainer.classList.remove('displayNone')
 cartProductsContainer.classList.add('displayOn')
 
-    productsArray.forEach((i)=>{
+    productsOnCartArray.forEach((i)=>{
         let li = document.createElement('li')
         li.textContent = i
         cartList.appendChild(li)
@@ -58,12 +63,26 @@ while(cartList.firstChild){
 
 
 //Adiciona produtos ao array
+
+function handleAddToCart(event){
+    productsOnCartArray.push(event.target.parentNode.childNodes[3].innerText)   
+    quantItems += 1;
+    displayQuant.innerText = quantItems
+}
+   addListeners();
+function addListeners(){
 addToCart.forEach((i)=>{   
-    i.addEventListener('click',(event)=>{
-     productsArray.push(event.target.parentNode.childNodes[3].innerText)   
-     quantItems += 1;
-     displayQuant.innerText = quantItems
-})  })
+
+i.removeEventListener('click')
+
+    i.addEventListener('click',handleAddToCart())
+ })
+
+}
+
+
+
+
 
 
 
@@ -75,10 +94,30 @@ openFormBtn.addEventListener('click',()=>{
 
 //fechar fomrmulario
 
-formContainer.addEventListener('click',()=>{
+closeFormBtn.addEventListener('click',()=>{
     if(formContainer.classList.contains('formContainerDisplayOn')){
         formContainer.classList.remove('formContainerDisplayOn')
-        
         }
 })
 
+
+//lidar com o submit do form
+
+form.addEventListener('submit',(event)=>{
+    event.preventDefault()
+    formContainer.classList.remove('formContainerDisplayOn')
+    console.log(event.target.childNodes)
+  let name =  event.target.childNodes[3].value
+  let price =  event.target.childNodes[5].value
+  let imgURL =  event.target.childNodes[7].value
+
+let product = {
+    "name" : name,
+    "price" : price,
+    "imgUrl" : imgURL
+
+}
+products.push(product);
+addListeners();
+display();
+})
