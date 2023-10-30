@@ -121,3 +121,14 @@ display: block;
     padding: 10px;
     border-radius: 5px;
 }
+
+#openForm{
+    position: relative;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    top: 10px;
+    left: 95vw;
+    padding: 10px;
+    background-color: black;
+}

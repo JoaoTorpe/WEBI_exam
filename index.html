@@ -7,13 +7,14 @@
     <title>Loja de coisas</title>
 </head>
 <body>
+<button id="openForm" >Add</button>
 
-    <div id="formContainer">
-        <form action="">
+    <div id="formContainer" class="displayNone" >
+        <form id="productForm"  action="">
                 <h3>Insert a product</h3>
-                <input type="text" name="nome" id="productName">
-                <input type="number" name="price" id="productPrice">
-                <input type="text" name="url" id="productImageUrl">
+                <input placeholder="Name" type="text" name="nome" id="productName">
+                <input placeholder="Price" type="number" name="price" id="productPrice">
+                <input placeholder="URL" type="text" name="url" id="productImageUrl">
                 <input type="submit" name="Add" id="submitProductData">
         </form>
         

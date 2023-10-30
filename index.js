@@ -24,6 +24,9 @@ const addToCart = document.querySelectorAll('.addToCart');
 const displayQuant = document.querySelector('#displayQuant')
 const cartProductsContainer = document.querySelector('#listContainer')
 const cartList = document.querySelector('#cartProductsList ul')
+const openFormBtn = document.querySelector('#openForm')
+const formContainer = document.querySelector('#formContainer')
+const form = document.querySelector('#productForm')
 let productsArray = [];
 let quantItems = 0;
 
@@ -62,4 +65,20 @@ addToCart.forEach((i)=>{
      displayQuant.innerText = quantItems
 })  })
 
+
+
+//Abrir formulario
+
+openFormBtn.addEventListener('click',()=>{
+    formContainer.classList.add('formContainerDisplayOn')
+})
+
+//fechar fomrmulario
+
+formContainer.addEventListener('click',()=>{
+    if(formContainer.classList.contains('formContainerDisplayOn')){
+        formContainer.classList.remove('formContainerDisplayOn')
+        
+        }
+})
 
