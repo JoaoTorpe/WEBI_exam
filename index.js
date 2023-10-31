@@ -1,10 +1,10 @@
 
 const ul = document.getElementById('main')
 
-display()
-function display(){
+
+
 products.forEach((p)=>generateLabel(p))
-}
+
 function generateLabel(p){
 
 let li = document.createElement('li')
@@ -24,7 +24,7 @@ ul.appendChild(li)
 
 
 const cart = document.querySelector('#cart');
-const addToCart = document.querySelectorAll('.addToCart');
+let addToCart = document.querySelectorAll('.addToCart');
 const displayQuant = document.querySelector('#displayQuant')
 const cartProductsContainer = document.querySelector('#listContainer')
 const cartList = document.querySelector('#cartProductsList ul')
@@ -47,6 +47,8 @@ cartProductsContainer.classList.add('displayOn')
         cartList.appendChild(li)
     })
 })
+
+
 
 
 //Fecha a lista de produtos do carrinho
@@ -73,18 +75,11 @@ function handleAddToCart(event){
 function addListeners(){
 addToCart.forEach((i)=>{   
 
-i.removeEventListener('click')
-
-    i.addEventListener('click',handleAddToCart())
+    i.removeEventListener('click',handleAddToCart)
+    
+    i.addEventListener('click',handleAddToCart)
  })
-
 }
-
-
-
-
-
-
 
 //Abrir formulario
 
@@ -106,7 +101,7 @@ closeFormBtn.addEventListener('click',()=>{
 form.addEventListener('submit',(event)=>{
     event.preventDefault()
     formContainer.classList.remove('formContainerDisplayOn')
-    console.log(event.target.childNodes)
+    
   let name =  event.target.childNodes[3].value
   let price =  event.target.childNodes[5].value
   let imgURL =  event.target.childNodes[7].value
@@ -117,7 +112,14 @@ let product = {
     "imgUrl" : imgURL
 
 }
-products.push(product);
+generateLabel(product);
+
+updateAddToCartList();
+console.log(addToCart)
 addListeners();
-display();
+
 })
+
+function updateAddToCartList() {
+    addToCart = document.querySelectorAll('.addToCart'); 
+}
