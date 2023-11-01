@@ -29,7 +29,6 @@
 
 .productLabel{
     width: 270px;
-    
 }
 
 .addToCart{
@@ -138,4 +137,11 @@ display: block;
     color: white;
     padding: 10px;
     background-color: black;
+    transition: 0.5s;
+}
+
+.smallBtns:hover{
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.829);
 }

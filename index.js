@@ -1,19 +1,25 @@
 
 const ul = document.getElementById('main')
 
-
-
+display();
+function display(){
+while(ul.firstChild){
+    ul.removeChild(ul.firstChild)
+}
 products.forEach((p)=>generateLabel(p))
-
+console.log(ul)
+}
 function generateLabel(p){
 
 let li = document.createElement('li')
 li.innerHTML = `
-<div class="productLabel">
+<div class="productLabel ">
+    
             <img id = "productImg" src = "${p.imgUrl} alt = "era pra ter uma img aqui" "/>
         <h3>${p.name}</h3>
         <p>R$ ${p.price}</p>
     <button class="addToCart" >Add to cart</button>
+    <button class="delete smallBtns">Delete</button>
 </div>`
 
 
@@ -25,6 +31,7 @@ ul.appendChild(li)
 
 const cart = document.querySelector('#cart');
 let addToCart = document.querySelectorAll('.addToCart');
+let deleteBtns = document.querySelectorAll('.delete')
 const displayQuant = document.querySelector('#displayQuant')
 const cartProductsContainer = document.querySelector('#listContainer')
 const cartList = document.querySelector('#cartProductsList ul')
@@ -34,6 +41,7 @@ const formContainer = document.querySelector('#formContainer')
 const form = document.querySelector('#productForm')
 let productsOnCartArray = [];
 let quantItems = 0;
+
 
 
 //Abre a lista de produtos do carrinho
@@ -49,8 +57,6 @@ cartProductsContainer.classList.add('displayOn')
 })
 
 
-
-
 //Fecha a lista de produtos do carrinho
 cartProductsContainer.addEventListener('click',()=>{
 if(cartProductsContainer.classList.contains('displayOn')){
@@ -64,15 +70,41 @@ while(cartList.firstChild){
 })
 
 
-//Adiciona produtos ao array
+//Handles dos eventos
 
 function handleAddToCart(event){
     productsOnCartArray.push(event.target.parentNode.childNodes[3].innerText)   
     quantItems += 1;
     displayQuant.innerText = quantItems
 }
-   addListeners();
-function addListeners(){
+
+function handleDelete(event){
+
+let confirmation = confirm("Are U sure little boy ?");
+    if(confirmation){
+  let ref = event.target.parentNode.childNodes[3].outerText;
+    
+        for(let i =0;i<products.length;i++){
+            if(products[i].name === ref){
+                products.splice(i,1);
+            }
+        }
+
+display();
+updateAddToCartList()
+updateDeleteBtns()
+addToCartListeners()
+deleteBtnsListers()
+
+    }
+
+
+
+}
+
+//Adicionando listeners dos buttons
+   addToCartListeners();
+function addToCartListeners(){
 addToCart.forEach((i)=>{   
 
     i.removeEventListener('click',handleAddToCart)
@@ -80,6 +112,17 @@ addToCart.forEach((i)=>{
     i.addEventListener('click',handleAddToCart)
  })
 }
+deleteBtnsListers();
+function deleteBtnsListers(){
+
+deleteBtns.forEach((i)=>{   
+
+    i.removeEventListener('click',handleDelete)
+    
+    i.addEventListener('click',handleDelete)
+ })
+}
+
 
 //Abrir formulario
 
@@ -112,14 +155,17 @@ let product = {
     "imgUrl" : imgURL
 
 }
-generateLabel(product);
-
+products.push(product)
+generateLabel(products[products.length - 1]);
 updateAddToCartList();
-console.log(addToCart)
-addListeners();
-
+updateDeleteBtns();
+addToCartListeners();
+deleteBtnsListers();
 })
 
 function updateAddToCartList() {
     addToCart = document.querySelectorAll('.addToCart'); 
+}
+function updateDeleteBtns() {
+    deleteBtns = document.querySelectorAll('.delete'); 
 }
