@@ -7,7 +7,6 @@ while(ul.firstChild){
     ul.removeChild(ul.firstChild)
 }
 products.forEach((p)=>generateLabel(p))
-console.log(ul)
 }
 function generateLabel(p){
 
@@ -15,7 +14,7 @@ let li = document.createElement('li')
 li.innerHTML = `
 <div class="productLabel ">
     
-            <img id = "productImg" src = "${p.imgUrl} alt = "era pra ter uma img aqui" "/>
+            <img class = "productImg" src = "${p.imgUrl} alt = "era pra ter uma img aqui" "/>
         <h3>${p.name}</h3>
         <p>R$ ${p.price}</p>
     <button class="addToCart" >Add to cart</button>
@@ -35,7 +34,7 @@ let deleteBtns = document.querySelectorAll('.delete')
 const displayQuant = document.querySelector('#displayQuant')
 const cartProductsList = document.querySelector('#cartProductsList')
 const closeList = document.querySelector('#closeList')
-const cartList = document.querySelector('#cartProductsList ul')
+const cartList = document.querySelector('#itemsUl')
 const openFormBtn = document.querySelector('#openForm')
 const closeFormBtn = document.querySelector('#closeForm')
 const formContainer = document.querySelector('#formContainer')
@@ -49,10 +48,20 @@ let quantItems = 0;
 cart.addEventListener('click',()=>{
 cartProductsList.classList.remove('displayNone')
 cartProductsList.classList.add('displayOn')
+ul.classList.remove('displayOn')
+ul.classList.add('displayNone')
 
     productsOnCartArray.forEach((i)=>{
         let li = document.createElement('li')
-        li.textContent = i
+        li.innerHTML = `
+        <div class="itemOnListLabel" >
+        <img class = "itemOnCartImg" src = "${i.img} alt = "era pra ter uma img aqui" "/>
+        <h3>${i.name}</h3>
+        <button  class="delete" >Delete</button>
+        </div>
+        `
+
+
         cartList.appendChild(li)
     })
 })
@@ -60,21 +69,29 @@ cartProductsList.classList.add('displayOn')
 
 //Fecha a lista de produtos do carrinho
 closeList.addEventListener('click',()=>{
-if(cartProductsList.classList.contains('displayOn')){
+
     cartProductsList.classList.remove('displayOn')  
     cartProductsList.classList.add('displayNone')
+    ul.classList.remove('displayNone')
+    ul.classList.add('displayOn')
 
 while(cartList.firstChild){
     cartList.removeChild(cartList.firstChild)
 }
-}
+
 })
 
 
 //Handles dos eventos
 
 function handleAddToCart(event){
-    productsOnCartArray.push(event.target.parentNode.childNodes[3].innerText)   
+    //productsOnCartArray.push(event.target.parentNode.childNodes[3].innerText)  
+    console.log(event.target.parentNode.childNodes[1].getAttribute('src'))
+    let cartItem = {
+        "name":event.target.parentNode.childNodes[3].innerText,
+        "img": event.target.parentNode.childNodes[1].getAttribute('src')
+    }
+    productsOnCartArray.push(cartItem)
     quantItems += 1;
     displayQuant.innerText = quantItems
 }
@@ -158,7 +175,7 @@ let product = {
 }
     document.getElementById('productName').value = ''
     document.getElementById('productPrice').value = ''
-   document.getElementById('productImageUrl').value = ''
+    document.getElementById('productImageUrl').value = ''
 products.push(product)
 generateLabel(products[products.length - 1]);
 updateAddToCartList();
