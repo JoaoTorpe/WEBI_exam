@@ -119,7 +119,7 @@ let confirmation = confirm("Deseja remover ?");
     for (let i = cartListNodes.length - 1; i >= 0; i--) {
         if (cartListNodes[i].childNodes[1].childNodes[3].innerText === ref) {
             cartListNodes[i].parentNode.removeChild(cartListNodes[i]);
-           
+           break;
         }
     }
 
@@ -128,13 +128,10 @@ let confirmation = confirm("Deseja remover ?");
         if(productsOnCartArray[i].name === ref){
             productsOnCartArray.splice(i,1);
             quantItems -= 1;
+            break;
         }
     }
-    
-       
         displayQuant.innerText = quantItems
-        
-
 updateDeleteBtns()
 deleteBtnsListers()
 
