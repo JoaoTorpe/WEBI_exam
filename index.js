@@ -45,6 +45,8 @@ let quantItems = 0;
 
 
 //Abre a lista de produtos do carrinho
+
+
 cart.addEventListener('click',()=>{
 cartProductsList.classList.remove('displayNone')
 cartProductsList.classList.add('displayOn')
@@ -60,10 +62,14 @@ ul.classList.add('displayNone')
         <button  class="delete" >Delete</button>
         </div>
         `
-
-
         cartList.appendChild(li)
     })
+    updateDeleteBtns()
+    deleteBtnsListers()
+    console.log(productsOnCartArray)
+    console.log(cartList.childNodes)
+   
+    
 })
 
 
@@ -85,7 +91,7 @@ while(cartList.firstChild){
 //Handles dos eventos
 
 function handleAddToCart(event){
-    //productsOnCartArray.push(event.target.parentNode.childNodes[3].innerText)  
+
     console.log(event.target.parentNode.childNodes[1].getAttribute('src'))
     let cartItem = {
         "name":event.target.parentNode.childNodes[3].innerText,
@@ -96,29 +102,47 @@ function handleAddToCart(event){
     displayQuant.innerText = quantItems
 }
 
+
 function handleDelete(event){
 
 let confirmation = confirm("Deseja remover ?");
     if(confirmation){
   let ref = event.target.parentNode.childNodes[3].outerText;
-    
-        for(let i =0;i<products.length;i++){
-            if(products[i].name === ref){
-                products.splice(i,1);
-            }
-        }
+    let cartListNodes = cartList.childNodes
 
-display();
-updateAddToCartList()
+    //Quando o nodelist esta vazio o primeira childe é um text
+        if(cartListNodes[0].nodeName == "#text"){
+            cartListNodes[0].parentNode.removeChild(cartListNodes[0])
+        }
+      
+//Remove os li do ul
+    for (let i = cartListNodes.length - 1; i >= 0; i--) {
+        if (cartListNodes[i].childNodes[1].childNodes[3].innerText === ref) {
+            cartListNodes[i].parentNode.removeChild(cartListNodes[i]);
+           
+        }
+    }
+
+    //Remove os itens do array
+    for(let i =productsOnCartArray.length-1;i>=0;i--){
+        if(productsOnCartArray[i].name === ref){
+            productsOnCartArray.splice(i,1);
+            quantItems -= 1;
+        }
+    }
+    
+       
+        displayQuant.innerText = quantItems
+        
+
 updateDeleteBtns()
-addToCartListeners()
 deleteBtnsListers()
 
     }
 
-
-
 }
+
+
 
 //Adicionando listeners dos buttons
    addToCartListeners();
