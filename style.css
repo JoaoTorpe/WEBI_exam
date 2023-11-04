@@ -16,8 +16,7 @@
     list-style: none;
      margin: auto;
      margin-top: 30px;
-    display: flex;
-    flex-wrap: wrap;
+      flex-wrap: wrap;
     width: 80vw;
     justify-content: space-evenly;
     row-gap: 20px;
@@ -70,12 +69,13 @@ nav{
     justify-content: center;
     border-radius: 10px;
     padding: 20px;
+   transition: 0.5s;
 }
 
 #main li:hover{
     border: 1px solid var(--lightGray);
-    border-radius: 10px;
-    padding: 20px;
+  transition: 0.2s;
+  
 }
 
 .addToCart{
@@ -126,8 +126,6 @@ nav{
 
 .displayOn{
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
  .displayNone{
@@ -136,17 +134,25 @@ nav{
 
 #cartProductsList{
     color: black;
-   display: flex;
-   justify-content: center;
 background-color: white;
-overflow: scroll;
-height: 200px;
-width: 250px;
+height: 100vh;
+
 }
 
 #cartProductsList ul{
-    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     list-style: none;
+    border: solid red;
+    width: 100%;
+}
+#cartProductsList ul li{
+   margin-top: 20px;
+}
+#closeList{
+    margin-left: 20px;
+    justify-self: flex-start;
 }
 
 #formContainer{
@@ -193,6 +199,8 @@ display: block;
     padding: 10px;
     background-color: black;
     transition: 0.5s;
+    height: 36px;
+    width: 45px;
 }
 
 .smallBtns:hover{

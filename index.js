@@ -33,7 +33,8 @@ const cart = document.querySelector('#cart');
 let addToCart = document.querySelectorAll('.addToCart');
 let deleteBtns = document.querySelectorAll('.delete')
 const displayQuant = document.querySelector('#displayQuant')
-const cartProductsContainer = document.querySelector('#listContainer')
+const cartProductsList = document.querySelector('#cartProductsList')
+const closeList = document.querySelector('#closeList')
 const cartList = document.querySelector('#cartProductsList ul')
 const openFormBtn = document.querySelector('#openForm')
 const closeFormBtn = document.querySelector('#closeForm')
@@ -46,8 +47,8 @@ let quantItems = 0;
 
 //Abre a lista de produtos do carrinho
 cart.addEventListener('click',()=>{
-cartProductsContainer.classList.remove('displayNone')
-cartProductsContainer.classList.add('displayOn')
+cartProductsList.classList.remove('displayNone')
+cartProductsList.classList.add('displayOn')
 
     productsOnCartArray.forEach((i)=>{
         let li = document.createElement('li')
@@ -58,10 +59,10 @@ cartProductsContainer.classList.add('displayOn')
 
 
 //Fecha a lista de produtos do carrinho
-cartProductsContainer.addEventListener('click',()=>{
-if(cartProductsContainer.classList.contains('displayOn')){
-    cartProductsContainer.classList.remove('displayOn')  
-    cartProductsContainer.classList.add('displayNone')
+closeList.addEventListener('click',()=>{
+if(cartProductsList.classList.contains('displayOn')){
+    cartProductsList.classList.remove('displayOn')  
+    cartProductsList.classList.add('displayNone')
 
 while(cartList.firstChild){
     cartList.removeChild(cartList.firstChild)
@@ -80,7 +81,7 @@ function handleAddToCart(event){
 
 function handleDelete(event){
 
-let confirmation = confirm("Are U sure little boy ?");
+let confirmation = confirm("Deseja remover ?");
     if(confirmation){
   let ref = event.target.parentNode.childNodes[3].outerText;
     
@@ -145,9 +146,9 @@ form.addEventListener('submit',(event)=>{
     event.preventDefault()
     formContainer.classList.remove('formContainerDisplayOn')
     
-  let name =  event.target.childNodes[3].value
-  let price =  event.target.childNodes[5].value
-  let imgURL =  event.target.childNodes[7].value
+  let name =  document.getElementById('productName').value
+  let price = document.getElementById('productPrice').value
+  let imgURL = document.getElementById('productImageUrl').value
 
 let product = {
     "name" : name,
@@ -155,6 +156,9 @@ let product = {
     "imgUrl" : imgURL
 
 }
+    document.getElementById('productName').value = ''
+    document.getElementById('productPrice').value = ''
+   document.getElementById('productImageUrl').value = ''
 products.push(product)
 generateLabel(products[products.length - 1]);
 updateAddToCartList();

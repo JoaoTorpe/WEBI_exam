@@ -21,7 +21,7 @@ let products = [
 },
 {           
     
-    "name" : "AIR JORDAN LEGACY LOW",
+    "name" : "AIR JORDAN LEGACY",
     "price" : 1399.99,
     "imgUrl" : "https://artwalk.vteximg.com.br/arquivos/ids/462007-1000-1000/CD706-9-071-1.jpg?v=638339453349500000"
 },
