@@ -19,7 +19,7 @@ li.innerHTML = `
         <h3>${p.name}</h3>
         <p>R$ ${p.price}</p>
     <button class="addToCart" >Add to cart</button>
-    <button class="delete smallBtns">Delete</button>
+    
 </div>`
 
 

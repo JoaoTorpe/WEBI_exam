@@ -1,24 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 :root{
     --lightGray: rgba(0, 0, 0, 0.308);
-
+    --btn--hover: rgba(0, 0, 0, 0.836);
 }
 
 #main{
     list-style: none;
      margin: auto;
-     margin-top: 100px;
+     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
     width: 80vw;
     justify-content: space-evenly;
     row-gap: 20px;
    
+}
+
+nav{
+    display: flex;
+    height: 80px;
+    justify-content: flex-end;
+    align-items: center;    
+    background-color: #f5e1ce41;
+}
+#leftSplit{
+    padding-right:30px ;
+    display: flex;
+    justify-self: flex-end;
+    align-items: center;
+}
+
+#headLine{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+    width: 100%;
+}
+#headLine h1{
+    margin-left: 130px;
 }
 
 #productImg{
@@ -29,15 +57,44 @@
 
 .productLabel{
     width: 270px;
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+#main li{
+
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#main li:hover{
+    border: 1px solid var(--lightGray);
+    border-radius: 10px;
+    padding: 20px;
 }
 
 .addToCart{
+    transition: 0.5s;
+    font-weight: 500;
     border: none;
-    padding: 10px;
+    margin-top: 10px;
+   width: 90px;
+   height: 40px;
     border-radius: 10px;
     color: white;
     background-color: black;
 }
+.addToCart:hover{
+    transition: 0.5s;
+    background-color: var(--btn--hover);
+}
+
+
 .addToCart:hover{
     cursor: pointer;
 }
@@ -141,5 +198,6 @@ display: block;
 .smallBtns:hover{
     transition: 0.5s;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.829);
+    background-color: var(--btn--hover);
 }
+
