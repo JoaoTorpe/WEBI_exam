@@ -186,10 +186,15 @@ closeFormBtn.addEventListener('click',()=>{
 form.addEventListener('submit',(event)=>{
     event.preventDefault()
     formContainer.classList.remove('formContainerDisplayOn')
-    
+
   let name =  document.getElementById('productName').value
   let price = document.getElementById('productPrice').value
   let imgURL = document.getElementById('productImageUrl').value
+
+if(name == '' || price == '' || imgURL == ''){
+    alert("Preencha os campos !")
+}
+else{
 
 let product = {
     "name" : name,
@@ -206,6 +211,9 @@ updateAddToCartList();
 updateDeleteBtns();
 addToCartListeners();
 deleteBtnsListers();
+}
+
+
 })
 
 function updateAddToCartList() {
