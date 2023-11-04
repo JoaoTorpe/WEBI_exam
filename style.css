@@ -12,14 +12,6 @@
     --btn--hover: rgba(0, 0, 0, 0.836);
 }
 
-#logo{
-    width: 25px;
-    position: relative;
-    top: 2px;
-    left: 5px;
-    transform: rotatey(180deg);
-}
-
 #main{
     list-style: none;
      margin: auto;
@@ -37,6 +29,19 @@ nav{
     justify-content: flex-end;
     align-items: center;    
     background-color: #f5e1ce41;
+    border-bottom: 5px solid  #d3c4b741;
+}
+#displayQuant{
+    font-weight: 600;
+    color: white;
+    background-color: rgb(10, 10, 10);
+    height: 15px;
+    width: 15px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
 }
 #leftSplit{
     padding-right:30px ;
@@ -99,12 +104,8 @@ nav{
 }
 .addToCart:hover{
     transition: 0.5s;
-    background-color: var(--btn--hover);
-}
-
-
-.addToCart:hover{
     cursor: pointer;
+    background-color: var(--btn--hover);
 }
 
 #cartArea{
@@ -266,4 +267,12 @@ display: block;
     transition: 0.5s;
     cursor: pointer;
     background-color: var(--btn--hover);
+}
+
+#logo{
+    width: 25px;
+    position: relative;
+    top: 2px;
+    left: 5px;
+    transform: rotatey(180deg);
 }
