@@ -12,6 +12,14 @@
     --btn--hover: rgba(0, 0, 0, 0.836);
 }
 
+#logo{
+    width: 25px;
+    position: relative;
+    top: 2px;
+    left: 5px;
+    transform: rotatey(180deg);
+}
+
 #main{
     list-style: none;
      margin: auto;
