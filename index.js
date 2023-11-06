@@ -12,9 +12,8 @@ function generateLabel(p){
 
 let li = document.createElement('li')
 li.innerHTML = `
-<div class="productLabel ">
-    
-            <img class = "productImg" src = "${p.imgUrl} alt = "era pra ter uma img aqui" "/>
+<div class="productLabel" >
+            <img class = "productImg" src = "${p.imgUrl}" alt = "era pra ter uma img aqui" />
         <h3>${p.name}</h3>
         <p>R$ ${p.price}</p>
     <button class="addToCart" >Add to cart</button>
@@ -61,7 +60,7 @@ ul.classList.add('displayNone')
         let li = document.createElement('li')
         li.innerHTML = `
         <div class="itemOnListLabel" >
-        <img class = "itemOnCartImg" src = "${i.img} alt = "era pra ter uma img aqui" "/>
+        <img class = "itemOnCartImg" src = "${i.img}" alt = "era pra ter uma img aqui"/>
         <h3>${i.name}</h3>
         <button  class="delete" >Delete</button>
         </div>
