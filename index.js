@@ -21,24 +21,28 @@ li.innerHTML = `
     
 </div>`
 
-
 ul.appendChild(li)
 
 
 }
 
 
-const cart = document.querySelector('#cart');
+
 let addToCart = document.querySelectorAll('.addToCart');
 let deleteBtns = document.querySelectorAll('.delete')
+
 const displayQuant = document.querySelector('#displayQuant')
+const cart = document.querySelector('#cart');
 const cartProductsList = document.querySelector('#cartProductsList')
 const closeList = document.querySelector('#closeList')
 const cartList = document.querySelector('#itemsUl')
+
 const openFormBtn = document.querySelector('#openForm')
 const closeFormBtn = document.querySelector('#closeForm')
+
 const formContainer = document.querySelector('#formContainer')
 const form = document.querySelector('#productForm')
+
 let productsOnCartArray = [];
 let quantItems = 0;
 
@@ -66,10 +70,6 @@ ul.classList.add('displayNone')
     })
     updateDeleteBtns()
     deleteBtnsListers()
-    console.log(productsOnCartArray)
-    console.log(cartList.childNodes)
-   
-    
 })
 
 
@@ -92,7 +92,6 @@ while(cartList.firstChild){
 
 function handleAddToCart(event){
 
-    console.log(event.target.parentNode.childNodes[1].getAttribute('src'))
     let cartItem = {
         "name":event.target.parentNode.childNodes[3].innerText,
         "img": event.target.parentNode.childNodes[1].getAttribute('src')
@@ -110,7 +109,7 @@ let confirmation = confirm("Deseja remover ?");
   let ref = event.target.parentNode.childNodes[3].outerText;
     let cartListNodes = cartList.childNodes
 
-    //Quando o nodelist esta vazio o primeira childe é um text
+    //Quando o nodelist esta vazio o primeira child é um text
         if(cartListNodes[0].nodeName == "#text"){
             cartListNodes[0].parentNode.removeChild(cartListNodes[0])
         }
@@ -172,9 +171,9 @@ openFormBtn.addEventListener('click',()=>{
 //fechar fomrmulario
 
 closeFormBtn.addEventListener('click',()=>{
-    if(formContainer.classList.contains('formContainerDisplayOn')){
+   
         formContainer.classList.remove('formContainerDisplayOn')
-        }
+        
 })
 
 
